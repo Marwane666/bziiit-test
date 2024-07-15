@@ -6,11 +6,11 @@ import os
 
 main = Blueprint('main', __name__)
 
-# Chemins vers les répertoires nécessaires
-dir_path = "data"  # Chemin vers votre répertoire contenant les textes du PDF
-persist_dir = "./storage1"  # Chemin vers votre répertoire de persistance
+# Paths to necessary directories
+dir_path = "data"  # Path to your directory containing the PDF texts
+persist_dir = "./storage1"  # Path to your persistence directory
 
-# Initialisation du moteur de chat
+# Initialize the chat engine
 chat_engine = initialize_and_persist_vectorstore(dir_path, persist_dir)
 
 @main.route('/')
@@ -20,6 +20,25 @@ def home():
 @main.route('/chatbot')
 def chatbot():
     return render_template('chatbot.html')
+
+@main.route('/send_message', methods=['POST'])
+def send_message():
+    message = request.form['message']
+    print("Received message:", message)  # Log the received message
+    
+    response = chat_engine.chat(message)
+    print("Generated response:", response)  # Log the response from the chat engine
+    print("Type of response:", type(response))
+    
+    if isinstance(response, llama_index.core.chat_engine.types.AgentChatResponse):
+        response_data = {
+            'response': response.response,
+        }
+    else:
+        response_data = str(response)
+    
+    return jsonify(response_data)
+
 @main.route('/documentation')
 def documentation():
     return render_template('documentation.html')
@@ -31,32 +50,12 @@ def questions():
 @main.route('/training_plan')
 def training_plan():
     try:
-        with open('answers.json', 'r', encoding='utf-8') as f:
-            answers = json.load(f)
-        training_plan = evaluate_answers_with_chat_engine(chat_engine, answers)
+        with open('training_plan.json', 'r', encoding='utf-8') as f:
+            training_plan = json.load(f)
         return render_template('training_plan.html', training_plan=training_plan)
     except Exception as e:
         print(f"Error in /training_plan: {e}")
         return "An error occurred while generating the training plan. Please try again later.", 500
-
-
-@main.route('/send_message', methods=['POST'])
-def send_message():
-    message = request.form['message']
-    print("Received message:", message)
-    
-    response = chat_engine.chat(message)
-    print(response)
-    print("Type of response:", type(response))
-    
-    if isinstance(response, llama_index.core.chat_engine.types.AgentChatResponse):
-        response_data = {
-            'response': response.response,
-        }
-    else:
-        response_data = str(response)
-    
-    return jsonify(response_data)
 
 @main.route('/generate_questions', methods=['POST'])
 def generate_questions():
@@ -77,7 +76,14 @@ def submit_answers():
     with open('answers.json', 'w', encoding='utf-8') as f:
         json.dump(answers, f, indent=4, ensure_ascii=False)
 
-    return redirect(url_for('main.evaluation'))
+    try:
+        training_plan = evaluate_answers_with_chat_engine(chat_engine, answers)
+        with open('training_plan.json', 'w', encoding='utf-8') as f:
+            json.dump(training_plan, f, indent=4, ensure_ascii=False)
+        return redirect(url_for('main.training_plan'))
+    except Exception as e:
+        print(f"Error in /submit_answers: {e}")
+        return "An error occurred while generating the training plan. Please try again later.", 500
 
 @main.route('/evaluation')
 def evaluation():
@@ -89,5 +95,3 @@ def evaluation():
     except Exception as e:
         print(f"Error in /evaluation: {e}")
         return "An error occurred while generating the evaluation. Please try again later.", 500
-
-

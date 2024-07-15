@@ -1,8 +1,60 @@
 {% extends "base.html" %} {% block content %}
-<div class="home-container">
-  <h1>Bienvenue sur notre plateforme</h1>
-  <p>
+<div class="jumbotron text-center">
+  <h1 class="display-4">Bienvenue sur notre plateforme</h1>
+  <p class="lead">
     Utilisez le menu de navigation pour accéder aux différentes fonctionnalités.
   </p>
+  <hr class="my-4" />
+  <p class="mb-4">
+    Explorez nos outils et ressources pour améliorer vos connaissances et
+    compétences.
+  </p>
+  <a class="btn btn-primary btn-lg" href="/chatbot" role="button"
+    >Démarrer avec le Chatbot</a
+  >
+</div>
+
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-4">
+      <div class="card text-center">
+        <div class="card-body">
+          <i class="fas fa-robot fa-3x mb-3"></i>
+          <h5 class="card-title">Chatbot</h5>
+          <p class="card-text">
+            Interagissez avec notre chatbot pour obtenir des réponses
+            instantanées à vos questions.
+          </p>
+          <a href="/chatbot" class="btn btn-primary">Démarrer</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card text-center">
+        <div class="card-body">
+          <i class="fas fa-question-circle fa-3x mb-3"></i>
+          <h5 class="card-title">Questions</h5>
+          <p class="card-text">
+            Découvrez et répondez à des questions pour évaluer vos
+            connaissances.
+          </p>
+          <a href="/questions" class="btn btn-primary">Voir les Questions</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card text-center">
+        <div class="card-body">
+          <i class="fas fa-chalkboard-teacher fa-3x mb-3"></i>
+          <h5 class="card-title">Plan de Formation</h5>
+          <p class="card-text">
+            Accédez à des plans de formation personnalisés pour améliorer vos
+            compétences.
+          </p>
+          <a href="/training_plan" class="btn btn-primary">Voir le Plan</a>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 {% endblock %}

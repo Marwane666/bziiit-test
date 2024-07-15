@@ -1,64 +1,20 @@
 {
-    "1": {
-        "question": "Quelle est l'une des limites de l'approche mentionnée dans le document ?",
+    "question_1": {
+        "id": "q1",
+        "question": "Quelle est l'approche recommandée pour évaluer les apports d'un service selon le document ?",
         "elements_de_reponse": [
-            "Difficulté d'obtenir des résultats précis en extrapolant à partir d'un sous-ensemble limité de données"
+            "Une approche spécifique à chaque service",
+            "La prise en compte d'une ou plusieurs catégories d'impact de façon indépendante",
+            "L'évitement du transfert d'impact"
         ]
     },
-    "2": {
-        "question": "Que doit-on prendre en compte lors de l’interprétation des résultats des performances ?",
+    "question_2": {
+        "id": "q2",
+        "question": "Quelles sont les exigences pour l'évaluation d'un service d'IA frugale mentionnées dans le document ?",
         "elements_de_reponse": [
-            "Les limites liées au choix de l’échantillon représentatif du jeu de données"
-        ]
-    },
-    "3": {
-        "question": "Quel est l'un des facteurs déterminant le choix de l’échantillon ?",
-        "elements_de_reponse": [
-            "La taille de l’ensemble de données",
-            "La complexité de l’ensemble de données",
-            "La variabilité de l’ensemble de données"
-        ]
-    },
-    "4": {
-        "question": "Quelle est la recommandation pour assurer la représentativité statistique de l’échantillon ?",
-        "elements_de_reponse": [
-            "Utiliser un échantillon aléatoire"
-        ]
-    },
-    "5": {
-        "question": "Dans quels cas peut-il être judicieux de choisir un échantillon de données plus complexe ?",
-        "elements_de_reponse": [
-            "Pour évaluer la performance du modèle dans des conditions difficiles"
-        ]
-    },
-    "6": {
-        "question": "Quel est le risque si l’échantillon sélectionné n’est pas représentatif de l’ensemble des données ?",
-        "elements_de_reponse": [
-            "Biais dans les résultats"
-        ]
-    },
-    "7": {
-        "question": "Quelle est la première étape de la mise en œuvre mentionnée dans le document ?",
-        "elements_de_reponse": [
-            "Sélection d'un échantillon représentatif du jeu d'entraînement"
-        ]
-    },
-    "8": {
-        "question": "Quel est le rôle d'une étude statistique des données dans ce contexte ?",
-        "elements_de_reponse": [
-            "Faciliter la sélection de l'échantillon de données"
-        ]
-    },
-    "9": {
-        "question": "Quelle est la spécificité des méthodologies pour évaluer les apports du service ?",
-        "elements_de_reponse": [
-            "Elles sont spécifiques à chaque service"
-        ]
-    },
-    "10": {
-        "question": "Quel est le risque de se focaliser sur une ou plusieurs catégories d’impact de façon indépendante ?",
-        "elements_de_reponse": [
-            "Oublier le spectre d’impacts potentiels ou faire abstraction des autres catégories d’impact non traitées"
+            "L'évaluation doit être basée sur la localisation des centres de calcul",
+            "Le service d'IA frugale doit être évalué sous les angles des algorithmes, des données et du matériel",
+            "La dissipation 'intelligente' de chaleur fatale ne peut pas être prise en compte"
         ]
     }
 }
