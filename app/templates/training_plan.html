@@ -1,0 +1,10 @@
+{% extends "base.html" %} {% block content %}
+<div class="card">
+  <div class="card-header">
+    <h2>Plan de Formation</h2>
+  </div>
+  <div class="card-body">
+    <div class="markdown-content">{{ training_plan | safe }}</div>
+  </div>
+</div>
+{% endblock %}

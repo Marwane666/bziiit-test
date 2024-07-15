@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Questions d'évaluation</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f9;
+        color: #333;
+        margin: 0;
+        padding: 20px;
+      }
+      .container {
+        max-width: 800px;
+        margin: auto;
+        background: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+      h2 {
+        color: #007bff;
+      }
+      #loading {
+        display: none;
+        text-align: center;
+        font-size: 18px;
+        margin-top: 20px;
+      }
+      #question-container p {
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h2>Questions d'évaluation</h2>
+      <form id="generate-questions-form">
+        <div class="form-group">
+          <label for="num_questions">Nombre de questions:</label>
+          <input
+            type="number"
+            class="form-control"
+            id="num_questions"
+            name="num_questions"
+            min="1"
+            required
+          />
+        </div>
+        <button type="submit" class="btn btn-primary">
+          Générer des questions
+        </button>
+      </form>
+      <div id="loading">Génération des questions...</div>
+      <form id="questions-form" style="display: none">
+        <div id="question-container"></div>
+        <button
+          type="button"
+          class="btn btn-success"
+          id="next-question-btn"
+          style="display: none"
+        >
+          Suivant
+        </button>
+      </form>
+    </div>
+
+    <script>
+      document
+        .getElementById("generate-questions-form")
+        .addEventListener("submit", async function (event) {
+          event.preventDefault();
+          const numQuestionsInput = document.getElementById("num_questions");
+          const numQuestions = numQuestionsInput.value;
+
+          document.getElementById("loading").style.display = "block";
+          document.getElementById("questions-form").style.display = "none";
+          document.getElementById("question-container").innerHTML = "";
+
+          const response = await fetch("/generate_questions", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ num_questions: numQuestions }),
+          });
+
+          const data = await response.json();
+          document.getElementById("loading").style.display = "none";
+
+          if (data.status === "success") {
+            console.log("Questions generated:", data.questions);
+            sessionStorage.setItem("questions", JSON.stringify(data.questions));
+            sessionStorage.setItem("currentQuestionIndex", 0);
+            showNextQuestion();
+          } else {
+            console.error("Failed to generate questions:", data);
+          }
+        });
+
+      document
+        .getElementById("next-question-btn")
+        .addEventListener("click", function () {
+          const answerInput = document.querySelector('input[name="answer"]');
+          if (answerInput.value.trim() !== "") {
+            const questions = JSON.parse(sessionStorage.getItem("questions"));
+            const currentQuestionIndex = parseInt(
+              sessionStorage.getItem("currentQuestionIndex"),
+              10
+            );
+            const currentQuestionKey =
+              Object.keys(questions)[currentQuestionIndex];
+            const currentQuestion = questions[currentQuestionKey];
+            currentQuestion.userAnswer = answerInput.value.trim();
+            questions[currentQuestionKey] = currentQuestion;
+            sessionStorage.setItem("questions", JSON.stringify(questions));
+
+            if (currentQuestionIndex < Object.keys(questions).length - 1) {
+              sessionStorage.setItem(
+                "currentQuestionIndex",
+                currentQuestionIndex + 1
+              );
+              showNextQuestion();
+            } else {
+              submitAnswers(questions);
+            }
+          } else {
+            alert("Veuillez entrer une réponse.");
+          }
+        });
+
+      function showNextQuestion() {
+        const questions = JSON.parse(sessionStorage.getItem("questions"));
+        const currentQuestionIndex = parseInt(
+          sessionStorage.getItem("currentQuestionIndex"),
+          10
+        );
+        const currentQuestionKey = Object.keys(questions)[currentQuestionIndex];
+        const currentQuestion = questions[currentQuestionKey];
+        const questionContainer = document.getElementById("question-container");
+
+        questionContainer.innerHTML = `
+                <p>${currentQuestion.question}</p>
+                <input type="text" class="form-control" name="answer" placeholder="Entrez votre réponse ici">
+            `;
+
+        document.getElementById("questions-form").style.display = "block";
+        document.getElementById("next-question-btn").style.display =
+          "inline-block";
+      }
+
+      async function submitAnswers(questions) {
+        console.log("Submitting answers:", questions);
+        const response = await fetch("/submit_answers", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ answers: questions }),
+        });
+
+        if (response.ok) {
+          window.location.href = "/evaluation";
+        } else {
+          console.error("Failed to submit answers");
+        }
+      }
+    </script>
+  </body>
+</html>

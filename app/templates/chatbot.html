@@ -1,0 +1,45 @@
+{% extends "base.html" %} {% block content %}
+<div class="chatbot-container">
+  <h2>Chatbot</h2>
+  <div id="chatbox">
+    <!-- Les messages apparaîtront ici -->
+  </div>
+  <form id="chat-form">
+    <input
+      type="text"
+      id="message"
+      name="message"
+      placeholder="Écrivez votre message..."
+    />
+    <button type="submit">Envoyer</button>
+  </form>
+</div>
+{% endblock %} {% block scripts %}
+<script>
+  document
+    .getElementById("chat-form")
+    .addEventListener("submit", async function (event) {
+      event.preventDefault();
+      const messageInput = document.getElementById("message");
+      const message = messageInput.value;
+      messageInput.value = "";
+
+      // Affiche le message de l'utilisateur dans le chatbox
+      const chatbox = document.getElementById("chatbox");
+      chatbox.innerHTML += `<p><strong>Vous:</strong> ${message}</p>`;
+
+      // Envoie le message au serveur
+      const response = await fetch("/send_message", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+        body: new URLSearchParams({ message }),
+      });
+
+      const responseData = await response.json();
+      chatbox.innerHTML += `<p><strong>Chatbot:</strong> ${responseData.response}</p>`;
+      chatbox.scrollTop = chatbox.scrollHeight; // Scroll to the bottom
+    });
+</script>
+{% endblock %}
