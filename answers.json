@@ -1,22 +1,47 @@
 {
-    "question_1": {
+    "1": {
         "elements_de_reponse": [
-            "Une approche spécifique à chaque service",
-            "La prise en compte d'une ou plusieurs catégories d'impact de façon indépendante",
-            "L'évitement du transfert d'impact"
+            "L'évaluation basée sur la localisation des centres de calcul est obligatoire.",
+            "Cette évaluation est requise par le GHG Protocol ou le Bilan GES.",
+            "La dissipation 'intelligente' de chaleur fatale ne peut pas être prise en compte dans cette évaluation."
         ],
-        "id": "q1",
-        "question": "Quelle est l'approche recommandée pour évaluer les apports d'un service selon le document ?",
+        "question": "Quelle est l'importance de l'évaluation basée sur la localisation des centres de calcul selon le document ?",
+        "userAnswer": "est obligatoire"
+    },
+    "2": {
+        "elements_de_reponse": [
+            "Le service d’IA frugale comprend les composants IA et non IA du service numérique.",
+            "Il doit être évalué sous les angles des algorithmes, des données et du matériel.",
+            "L'évaluation du service d’IA frugale est absolument nécessaire."
+        ],
+        "question": "Que comprend le service d’IA frugale selon le document ?",
         "userAnswer": "GHG Protocol. Bilan GES."
     },
-    "question_2": {
+    "3": {
         "elements_de_reponse": [
-            "L'évaluation doit être basée sur la localisation des centres de calcul",
-            "Le service d'IA frugale doit être évalué sous les angles des algorithmes, des données et du matériel",
-            "La dissipation 'intelligente' de chaleur fatale ne peut pas être prise en compte"
+            "Les limites de la méthodologie proposée sont discutées.",
+            "Cette section se trouve sur la page 34 du document.",
+            "Aucune information spécifique sur les sujets abordés dans cette section n'est fournie dans le contexte donné."
         ],
-        "id": "q2",
-        "question": "Quelles sont les exigences pour l'évaluation d'un service d'IA frugale mentionnées dans le document ?",
+        "question": "Quels sont les sujets abordés dans la section 'Limites de la méthodologie proposée' du document ?",
+        "userAnswer": "GHG Protocol. Bilan GES."
+    },
+    "4": {
+        "elements_de_reponse": [
+            "L'approche méthodologique est discutée.",
+            "La description des bonnes pratiques est fournie.",
+            "Des informations pour aller plus loin sont données."
+        ],
+        "question": "Qu'est-ce qui est discuté dans la section 'Bonnes pratiques' du document ?",
         "userAnswer": "Les bonnes pratiques sont décrites méthodiquement dans le document, de la page 37 à la page 47."
+    },
+    "5": {
+        "elements_de_reponse": [
+            "La communication sur le caractère frugal d'un service d'IA est discutée.",
+            "La communication sur le bilan positif pour une catégorie d’impact d’un service frugal d’IA est abordée.",
+            "L'évaluation quantitative d'indicateurs environnementaux sur le cycle de vie est discutée."
+        ],
+        "question": "Quels sont les sujets abordés dans la section 'Communication' du document ?",
+        "userAnswer": "GHG Protocol. Bilan GES."
     }
 }
