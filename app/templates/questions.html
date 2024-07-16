@@ -107,35 +107,7 @@
 
   document
     .getElementById("next-question-btn")
-    .addEventListener("click", function () {
-      const answerInput = document.querySelector('input[name="answer"]');
-      if (answerInput.value.trim() !== "") {
-        const questions = JSON.parse(sessionStorage.getItem("questions"));
-        const currentQuestionIndex = parseInt(
-          sessionStorage.getItem("currentQuestionIndex"),
-          10
-        );
-        const currentQuestionKey = Object.keys(questions)[currentQuestionIndex];
-        const currentQuestion = questions[currentQuestionKey];
-        currentQuestion.userAnswer = answerInput.value.trim();
-        questions[currentQuestionKey] = currentQuestion;
-        sessionStorage.setItem("questions", JSON.stringify(questions));
-
-        if (currentQuestionIndex < Object.keys(questions).length - 1) {
-          sessionStorage.setItem(
-            "currentQuestionIndex",
-            currentQuestionIndex + 1
-          );
-          showNextQuestion();
-        } else {
-          document.getElementById("next-question-btn").style.display = "none";
-          document.getElementById("submit-answers-btn").style.display =
-            "inline-block";
-        }
-      } else {
-        alert("Veuillez entrer une réponse.");
-      }
-    });
+    .addEventListener("click", handleNextQuestion);
 
   document
     .getElementById("submit-answers-btn")
@@ -143,6 +115,50 @@
       const questions = JSON.parse(sessionStorage.getItem("questions"));
       submitAnswers(questions);
     });
+
+  document.addEventListener("keydown", function (event) {
+    if (event.key === "Enter") {
+      event.preventDefault();
+      const nextQuestionBtn = document.getElementById("next-question-btn");
+      const submitAnswersBtn = document.getElementById("submit-answers-btn");
+      if (nextQuestionBtn.style.display === "inline-block") {
+        handleNextQuestion();
+      } else if (submitAnswersBtn.style.display === "inline-block") {
+        const questions = JSON.parse(sessionStorage.getItem("questions"));
+        submitAnswers(questions);
+      }
+    }
+  });
+
+  function handleNextQuestion() {
+    const answerInput = document.querySelector('input[name="answer"]');
+    if (answerInput.value.trim() !== "") {
+      const questions = JSON.parse(sessionStorage.getItem("questions"));
+      const currentQuestionIndex = parseInt(
+        sessionStorage.getItem("currentQuestionIndex"),
+        10
+      );
+      const currentQuestionKey = Object.keys(questions)[currentQuestionIndex];
+      const currentQuestion = questions[currentQuestionKey];
+      currentQuestion.userAnswer = answerInput.value.trim();
+      questions[currentQuestionKey] = currentQuestion;
+      sessionStorage.setItem("questions", JSON.stringify(questions));
+
+      if (currentQuestionIndex < Object.keys(questions).length - 1) {
+        sessionStorage.setItem(
+          "currentQuestionIndex",
+          currentQuestionIndex + 1
+        );
+        showNextQuestion();
+      } else {
+        document.getElementById("next-question-btn").style.display = "none";
+        document.getElementById("submit-answers-btn").style.display =
+          "inline-block";
+      }
+    } else {
+      alert("Veuillez entrer une réponse.");
+    }
+  }
 
   function showNextQuestion() {
     const questions = JSON.parse(sessionStorage.getItem("questions"));

@@ -84,7 +84,7 @@ def generation_questions(context,chat_engine):
     return questions
 
 def evaluate_answers_with_chat_engine(chat_engine, answers):
-    prompt = f"En s'adressant directement au candidat,Évalue ces réponses suivantes :\n{json.dumps(answers, indent=4, ensure_ascii=False)} et propose un plan de formation basé sur les éléments non maîtrisés, en s'appuyant sur le contexte"
+    prompt = f"Tu te comportes comme un évaluateur, qui prend en charge les éléments de réponses et le contexte des documents. En quatre lignes pour toute l'évaluation, évalue les réponses de ce candidat :\n{json.dumps(answers, indent=4, ensure_ascii=False)}(commence par : évaluation de vos réponses : ...). Propose un plan de formation bien structuré basé sur le contexte pour améliorer les éléments non maîtrisés(commence par : Voici votre plan de formation : ...)."
     response = chat_engine.chat(prompt)
 
     # Debugging statement to print the response

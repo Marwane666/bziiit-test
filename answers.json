@@ -2,46 +2,41 @@
     "1": {
         "elements_de_reponse": [
             "L'évaluation basée sur la localisation des centres de calcul est obligatoire.",
-            "Cette évaluation est requise par le GHG Protocol ou le Bilan GES.",
-            "La dissipation 'intelligente' de chaleur fatale ne peut pas être prise en compte dans cette évaluation."
+            "Cette évaluation est recommandée par le GHG Protocol ou le Bilan GES."
         ],
         "question": "Quelle est l'importance de l'évaluation basée sur la localisation des centres de calcul selon le document ?",
         "userAnswer": "est obligatoire"
     },
     "2": {
         "elements_de_reponse": [
-            "Le service d’IA frugale comprend les composants IA et non IA du service numérique.",
-            "Il doit être évalué sous les angles des algorithmes, des données et du matériel.",
-            "L'évaluation du service d’IA frugale est absolument nécessaire."
+            "La dissipation 'intelligente' de chaleur fatale fait référence au recyclage de la chaleur pour le chauffage.",
+            "La dissipation 'intelligente' de chaleur fatale ne peut pas être prise en compte dans l'évaluation."
         ],
-        "question": "Que comprend le service d’IA frugale selon le document ?",
-        "userAnswer": "GHG Protocol. Bilan GES."
+        "question": "Qu'est-ce que la dissipation 'intelligente' de chaleur fatale et peut-elle être prise en compte dans l'évaluation ?",
+        "userAnswer": "environemental"
     },
     "3": {
         "elements_de_reponse": [
-            "Les limites de la méthodologie proposée sont discutées.",
-            "Cette section se trouve sur la page 34 du document.",
-            "Aucune information spécifique sur les sujets abordés dans cette section n'est fournie dans le contexte donné."
+            "Le service d'IA frugale comprend les composants IA et non IA du service numérique.",
+            "Le service d'IA frugale doit être évalué sous les angles des algorithmes, des données et du matériel."
         ],
-        "question": "Quels sont les sujets abordés dans la section 'Limites de la méthodologie proposée' du document ?",
-        "userAnswer": "GHG Protocol. Bilan GES."
+        "question": "Que comprend le service d'IA frugale selon le document ?",
+        "userAnswer": "Les bonnes pratiques sont décrites méthodiquement dans le document, de la page 37 à la page 47."
     },
     "4": {
         "elements_de_reponse": [
-            "L'approche méthodologique est discutée.",
-            "La description des bonnes pratiques est fournie.",
-            "Des informations pour aller plus loin sont données."
+            "Les limites de la méthodologie proposée sont discutées.",
+            "Cette section couvre les pages 34 à 36 du document."
         ],
-        "question": "Qu'est-ce qui est discuté dans la section 'Bonnes pratiques' du document ?",
-        "userAnswer": "Les bonnes pratiques sont décrites méthodiquement dans le document, de la page 37 à la page 47."
+        "question": "Quels sont les sujets abordés dans la section 'Limites de la méthodologie proposée' du document ?",
+        "userAnswer": "environemental"
     },
     "5": {
         "elements_de_reponse": [
-            "La communication sur le caractère frugal d'un service d'IA est discutée.",
-            "La communication sur le bilan positif pour une catégorie d’impact d’un service frugal d’IA est abordée.",
-            "L'évaluation quantitative d'indicateurs environnementaux sur le cycle de vie est discutée."
+            "Le document décrit une approche méthodologique pour les bonnes pratiques.",
+            "Les bonnes pratiques sont décrites de la page 37 à la page 39 du document."
         ],
-        "question": "Quels sont les sujets abordés dans la section 'Communication' du document ?",
-        "userAnswer": "GHG Protocol. Bilan GES."
+        "question": "Quelles sont les bonnes pratiques décrites dans le document ?",
+        "userAnswer": "Les bonnes pratiques sont décrites méthodiquement dans le document, de la page 37 à la page 47."
     }
 }
