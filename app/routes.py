@@ -61,11 +61,23 @@ def training_plan():
 def generate_questions():
     data = request.get_json()
     num_questions = data.get('num_questions', 10)
-    prompt = f"Tu me génère {num_questions} questions pour évaluer l’utilisateur sur ses connaissances du document, en restant resreint au contexte, les questions doivent contenir (l'id de la question, la question et les éléments de réponse[en sous-éléments], non pas les choix comme un qcm). format json brut"
+    prompt = f"Tu me génère {num_questions} questions pour évaluer l’utilisateur sur ses connaissances du document, en restant resreint au contexte, les questions doivent contenir (l'id de la question, la question et les éléments de réponse: en plusieurs sous-éléments, non pas les choix comme un qcm). format json brut"
     response = chat_engine.chat(prompt)
-    questions = json.loads(response.response)  # Ensure the response is parsed into a dictionary
+    print(response)
+
+    try:
+        # Ensure the response is parsed into a dictionary
+        if isinstance(response.response, str):
+            questions = json.loads(response.response)
+        else:
+            questions = response.json()
+    except json.JSONDecodeError as e:
+        main.logger.error(f"JSON decode error: {e}")
+        return jsonify({"error": "Invalid JSON format"}), 500
+
     with open('questions.json', 'w', encoding='utf-8') as f:
         json.dump(questions, f, indent=4, ensure_ascii=False)
+    
     return jsonify({'status': 'success', 'questions': questions})
 
 @main.route('/submit_answers', methods=['POST'])

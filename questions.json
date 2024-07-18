@@ -1,37 +1,34 @@
 {
     "1": {
         "question": "Quelle est l'importance de l'évaluation basée sur la localisation des centres de calcul selon le document ?",
-        "elements_de_reponse": [
-            "L'évaluation basée sur la localisation des centres de calcul est obligatoire.",
-            "Cette évaluation est recommandée par le GHG Protocol ou le Bilan GES."
-        ]
+        "elements_de_reponse": {
+            "a": "L'évaluation basée sur la localisation des centres de calcul est obligatoire selon le GHG Protocol ou le Bilan GES.",
+            "b": "La dissipation intelligente de chaleur fatale ne peut pas être prise en compte dans cette évaluation."
+        }
     },
     "2": {
-        "question": "Qu'est-ce que la dissipation 'intelligente' de chaleur fatale et peut-elle être prise en compte dans l'évaluation ?",
-        "elements_de_reponse": [
-            "La dissipation 'intelligente' de chaleur fatale fait référence au recyclage de la chaleur pour le chauffage.",
-            "La dissipation 'intelligente' de chaleur fatale ne peut pas être prise en compte dans l'évaluation."
-        ]
+        "question": "Que comprend le service d’IA frugale selon le document ?",
+        "elements_de_reponse": {
+            "a": "Le service d’IA frugale comprend les composants IA et non IA du service numérique.",
+            "b": "Il doit être évalué sous les angles des algorithmes, des données et du matériel."
+        }
     },
     "3": {
-        "question": "Que comprend le service d'IA frugale selon le document ?",
-        "elements_de_reponse": [
-            "Le service d'IA frugale comprend les composants IA et non IA du service numérique.",
-            "Le service d'IA frugale doit être évalué sous les angles des algorithmes, des données et du matériel."
-        ]
+        "question": "Quelles sont les limites de la méthodologie proposée dans le document ?",
+        "elements_de_reponse": {
+            "a": "Le document ne fournit pas de détails spécifiques sur les limites de la méthodologie proposée."
+        }
     },
     "4": {
-        "question": "Quels sont les sujets abordés dans la section 'Limites de la méthodologie proposée' du document ?",
-        "elements_de_reponse": [
-            "Les limites de la méthodologie proposée sont discutées.",
-            "Cette section couvre les pages 34 à 36 du document."
-        ]
+        "question": "Quelles sont les bonnes pratiques décrites dans le document ?",
+        "elements_de_reponse": {
+            "a": "Le document ne fournit pas de détails spécifiques sur les bonnes pratiques décrites."
+        }
     },
     "5": {
-        "question": "Quelles sont les bonnes pratiques décrites dans le document ?",
-        "elements_de_reponse": [
-            "Le document décrit une approche méthodologique pour les bonnes pratiques.",
-            "Les bonnes pratiques sont décrites de la page 37 à la page 39 du document."
-        ]
+        "question": "Comment communiquer sur le caractère frugal d'un service d'IA selon le document ?",
+        "elements_de_reponse": {
+            "a": "Le document ne fournit pas de détails spécifiques sur la façon de communiquer sur le caractère frugal d'un service d'IA."
+        }
     }
 }
