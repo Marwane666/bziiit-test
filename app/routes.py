@@ -61,7 +61,7 @@ def training_plan():
 def generate_questions():
     data = request.get_json()
     num_questions = data.get('num_questions', 10)
-    prompt = f"Tu me génère {num_questions} questions pour évaluer l’utilisateur sur ses connaissances du document, en restant resreint au contexte, les questions doivent contenir (l'id de la question, la question et les éléments de réponses corrects à partir des documments qui doivent être présent dans la réponse de l'utilisateur). format json brut"
+    prompt = f"Tu me génère {num_questions} questions pour évaluer l’utilisateur sur ses connaissances du document, en restant resreint au contexte, les questions doivent contenir (l'id de la question, la question et les éléments de réponses, des idées phrease informatives, corrects à partir des documments qui doivent être présents au même sens dans la réponse de l'utilisateur). format json brut"
     response = chat_engine.chat(prompt)
     print(response)
 
